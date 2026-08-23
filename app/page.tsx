@@ -48,7 +48,7 @@ export default async function Home() {
   }
   const distribucion = [...porCategoria.entries()].sort((a, b) => b[1] - a[1]);
 
-  const recientes = all.slice(0, 10);
+  const recientes = all.slice(0, 20);
   const fmt = (n: number) => n.toLocaleString("es-MX", { style: "currency", currency: "MXN" });
 
   return (
