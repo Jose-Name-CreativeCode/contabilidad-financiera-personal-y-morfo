@@ -6,16 +6,20 @@ export function RecentLimitSelect({ options, value }: { options: number[]; value
   const router = useRouter();
 
   return (
-    <select
-      value={value}
-      onChange={(e) => router.push(`/?limit=${e.target.value}`)}
-      className="rounded border px-2 py-1 text-sm"
-    >
+    <div className="flex gap-1">
       {options.map((n) => (
-        <option key={n} value={n}>
-          Mostrar {n}
-        </option>
+        <button
+          key={n}
+          type="button"
+          onClick={() => router.push(`/?limit=${n}`)}
+          className={
+            "rounded border px-2 py-1 text-sm " +
+            (n === value ? "bg-black text-white" : "hover:bg-zinc-100")
+          }
+        >
+          {n}
+        </button>
       ))}
-    </select>
+    </div>
   );
 }

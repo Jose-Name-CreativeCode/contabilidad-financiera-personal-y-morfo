@@ -4,7 +4,7 @@ import { logout } from "@/app/actions";
 import { TransactionForm } from "@/app/TransactionForm";
 import { RecentLimitSelect } from "@/app/RecentLimitSelect";
 
-const RECENT_LIMITS = [15, 25, 50, 100];
+const RECENT_LIMITS = [10, 15, 25, 50, 100];
 
 export default async function Home({
   searchParams,
@@ -12,7 +12,7 @@ export default async function Home({
   searchParams: Promise<{ limit?: string }>;
 }) {
   const { limit: limitParam } = await searchParams;
-  const limit = RECENT_LIMITS.includes(Number(limitParam)) ? Number(limitParam) : 15;
+  const limit = RECENT_LIMITS.includes(Number(limitParam)) ? Number(limitParam) : 10;
 
   const supabase = await createClient();
 
@@ -144,10 +144,7 @@ export default async function Home({
       </section>
 
       <section>
-        <div className="mb-2 flex items-center justify-between">
-          <h2 className="font-semibold">Movimientos recientes</h2>
-          <RecentLimitSelect options={RECENT_LIMITS} value={limit} />
-        </div>
+        <h2 className="mb-2 font-semibold">Movimientos recientes</h2>
         <table className="w-full text-left text-sm">
           <thead>
             <tr className="border-b">
@@ -179,6 +176,10 @@ export default async function Home({
             )}
           </tbody>
         </table>
+        <div className="mt-2 flex items-center gap-2 text-sm text-zinc-500">
+          <span>Mostrar:</span>
+          <RecentLimitSelect options={RECENT_LIMITS} value={limit} />
+        </div>
       </section>
     </main>
   );
