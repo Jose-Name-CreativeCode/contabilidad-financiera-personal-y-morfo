@@ -28,6 +28,29 @@ export async function proxy(request: NextRequest) {
   // refresca la sesión si el token expiró (necesario para Server Components)
   await supabase.auth.getUser();
 
+  const morfoSupabase = createServerClient(
+    process.env.NEXT_PUBLIC_MORFO_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_MORFO_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll();
+        },
+        setAll(cookiesToSet) {
+          for (const { name, value } of cookiesToSet) {
+            request.cookies.set(name, value);
+          }
+          response = NextResponse.next({ request });
+          for (const { name, value, options } of cookiesToSet) {
+            response.cookies.set(name, value, options);
+          }
+        },
+      },
+    },
+  );
+
+  await morfoSupabase.auth.getUser();
+
   return response;
 }
 

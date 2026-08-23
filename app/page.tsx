@@ -84,14 +84,22 @@ export default async function Home({
               {user.email} · {monthLabel}
             </p>
           </div>
-          <form action={logout}>
-            <button
-              type="submit"
+          <div className="flex items-center gap-2">
+            <a
+              href="/morfo"
               className="rounded-lg border border-white/10 px-3 py-1.5 text-xs text-zinc-300 hover:bg-white/5"
             >
-              Cerrar sesión
-            </button>
-          </form>
+              Morfo →
+            </a>
+            <form action={logout}>
+              <button
+                type="submit"
+                className="rounded-lg border border-white/10 px-3 py-1.5 text-xs text-zinc-300 hover:bg-white/5"
+              >
+                Cerrar sesión
+              </button>
+            </form>
+          </div>
         </div>
 
         <BalanceHero saldo={saldo} />
