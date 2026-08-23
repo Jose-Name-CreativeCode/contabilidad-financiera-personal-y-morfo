@@ -50,6 +50,12 @@ export default async function MorfoClientsPage() {
             >
               ← Finanzas
             </Link>
+            <Link
+              href="/morfo/cotizaciones"
+              className="rounded-lg border border-white/10 px-3 py-1.5 text-xs text-zinc-300 hover:bg-white/5"
+            >
+              Cotizaciones
+            </Link>
             <form action={logout}>
               <button
                 type="submit"

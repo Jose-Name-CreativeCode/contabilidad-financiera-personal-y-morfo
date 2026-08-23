@@ -85,3 +85,122 @@ export async function deleteClient(id: string) {
   revalidatePath("/morfo");
   redirect("/morfo");
 }
+
+export async function saveQuote(
+  _prevState: { error: string } | undefined,
+  formData: FormData,
+) {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return { error: "Sesión no válida." };
+  }
+
+  const id = String(formData.get("id") ?? "") || null;
+  const client_id = String(formData.get("client_id") ?? "");
+  const title = String(formData.get("title") ?? "").trim();
+  const service_type = String(formData.get("service_type") ?? "").trim() || null;
+  const quote_date = String(formData.get("quote_date") ?? "");
+  const status = String(formData.get("status") ?? "borrador");
+  const payment_status = String(formData.get("payment_status") ?? "no_pagada");
+  const payment_method = String(formData.get("payment_method") ?? "").trim() || null;
+  const service_amount = Number(formData.get("service_amount") ?? 0);
+  const ad_spend_required = formData.get("ad_spend_required") === "on";
+  const ad_spend = Number(formData.get("ad_spend") ?? 0);
+  const ad_budget = Number(formData.get("ad_budget") ?? 0);
+  const invoice_required = formData.get("invoice_required") === "on";
+  const iva = Number(formData.get("iva") ?? 0);
+  const total_paid = Number(formData.get("total_paid") ?? 0);
+  const notes = String(formData.get("notes") ?? "").trim();
+  const custom_table_title = String(formData.get("custom_table_title") ?? "").trim() || null;
+
+  let custom_table_rows: unknown = [];
+  try {
+    custom_table_rows = JSON.parse(String(formData.get("custom_table_rows") ?? "[]"));
+  } catch {
+    custom_table_rows = [];
+  }
+
+  if (!title || !client_id || !quote_date) {
+    return { error: "Faltan campos obligatorios (título, cliente o fecha)." };
+  }
+
+  const payload = {
+    client_id,
+    title,
+    service_type,
+    quote_date,
+    status,
+    payment_status,
+    payment_method,
+    service_amount,
+    ad_spend_required,
+    ad_spend,
+    ad_budget,
+    invoice_required,
+    iva,
+    total_paid,
+    notes,
+    custom_table_title,
+    custom_table_rows,
+  };
+
+  const { error } = id
+    ? await supabase.from("quotes").update(payload).eq("id", id)
+    : await supabase.from("quotes").insert(payload);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/morfo/cotizaciones");
+  redirect("/morfo/cotizaciones");
+}
+
+export async function deleteQuote(id: string) {
+  const supabase = await createClient();
+  await supabase.from("quotes").delete().eq("id", id);
+  revalidatePath("/morfo/cotizaciones");
+  redirect("/morfo/cotizaciones");
+}
+
+export async function saveAgencySettings(
+  _prevState: { error: string } | undefined,
+  formData: FormData,
+) {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return { error: "Sesión no válida." };
+  }
+
+  const payload = {
+    agency_name: String(formData.get("agency_name") ?? "").trim(),
+    agency_email: String(formData.get("agency_email") ?? "").trim(),
+    agency_phone: String(formData.get("agency_phone") ?? "").trim(),
+    agency_website: String(formData.get("agency_website") ?? "").trim(),
+    agency_address: String(formData.get("agency_address") ?? "").trim(),
+    payment_methods: String(formData.get("payment_methods") ?? "").trim(),
+    bank_details_invoice: String(formData.get("bank_details_invoice") ?? "").trim(),
+    bank_details_no_invoice: String(formData.get("bank_details_no_invoice") ?? "").trim(),
+    advance_percent: Number(formData.get("advance_percent") ?? 50),
+    terms: String(formData.get("terms") ?? "").trim(),
+  };
+
+  const { error } = await supabase.from("agency_settings").update(payload).eq("id", "default");
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/morfo/ajustes");
+  return { error: "" };
+}
