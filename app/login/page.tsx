@@ -3,36 +3,36 @@
 import { useActionState } from "react";
 import { login } from "@/app/actions";
 
+const inputClass =
+  "rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 outline-none focus:border-white/30";
+
 export default function LoginPage() {
   const [state, formAction, pending] = useActionState(login, undefined);
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center gap-4 p-6">
-      <h1 className="text-lg font-semibold">Iniciar sesión</h1>
-      <form action={formAction} className="flex flex-col gap-3">
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          required
-          className="rounded border px-3 py-2"
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Contraseña"
-          required
-          className="rounded border px-3 py-2"
-        />
-        <button
-          type="submit"
-          disabled={pending}
-          className="rounded bg-black px-3 py-2 text-white disabled:opacity-50"
-        >
-          {pending ? "Entrando..." : "Entrar"}
-        </button>
-        {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
-      </form>
+    <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-zinc-950 via-zinc-900 to-black p-6 text-zinc-100">
+      <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur">
+        <h1 className="mb-1 text-lg font-semibold">Finanzas</h1>
+        <p className="mb-5 text-sm text-zinc-500">Inicia sesión para continuar</p>
+        <form action={formAction} className="flex flex-col gap-3">
+          <input name="email" type="email" placeholder="Email" required className={inputClass} />
+          <input
+            name="password"
+            type="password"
+            placeholder="Contraseña"
+            required
+            className={inputClass}
+          />
+          <button
+            type="submit"
+            disabled={pending}
+            className="rounded-lg bg-gradient-to-r from-violet-500 to-indigo-500 px-3 py-2 text-sm font-medium text-white transition hover:opacity-90 disabled:opacity-50"
+          >
+            {pending ? "Entrando..." : "Entrar"}
+          </button>
+          {state?.error && <p className="text-sm text-rose-400">{state.error}</p>}
+        </form>
+      </div>
     </main>
   );
 }

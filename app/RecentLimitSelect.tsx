@@ -13,8 +13,10 @@ export function RecentLimitSelect({ options, value }: { options: number[]; value
           type="button"
           onClick={() => router.push(`/?limit=${n}`)}
           className={
-            "rounded border px-2 py-1 text-sm " +
-            (n === value ? "bg-black text-white" : "hover:bg-zinc-100")
+            "rounded-full border px-2.5 py-1 text-xs transition " +
+            (n === value
+              ? "border-transparent bg-gradient-to-r from-violet-500 to-indigo-500 text-white"
+              : "border-white/10 text-zinc-400 hover:bg-white/5")
           }
         >
           {n}

@@ -5,6 +5,9 @@ import { createTransaction } from "@/app/actions";
 
 type Option = { id: string; name: string };
 
+const inputClass =
+  "rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 outline-none focus:border-white/30";
+
 export function TransactionForm({
   accounts,
   categories,
@@ -16,9 +19,9 @@ export function TransactionForm({
   const today = new Date().toISOString().slice(0, 10);
 
   return (
-    <form action={formAction} className="flex flex-col gap-2 rounded border p-4">
+    <form action={formAction} className="flex flex-col gap-2">
       <div className="flex gap-2">
-        <select name="type" required className="flex-1 rounded border px-2 py-1">
+        <select name="type" required className={`flex-1 ${inputClass}`}>
           <option value="expense">Gasto</option>
           <option value="income">Ingreso</option>
         </select>
@@ -29,17 +32,12 @@ export function TransactionForm({
           min="0.01"
           placeholder="Monto"
           required
-          className="w-32 rounded border px-2 py-1"
+          className={`w-32 ${inputClass}`}
         />
       </div>
-      <input
-        name="description"
-        type="text"
-        placeholder="Descripción"
-        className="rounded border px-2 py-1"
-      />
+      <input name="description" type="text" placeholder="Descripción" className={inputClass} />
       <div className="flex gap-2">
-        <select name="account_id" required className="flex-1 rounded border px-2 py-1">
+        <select name="account_id" required className={`flex-1 ${inputClass}`}>
           <option value="">Cuenta...</option>
           {accounts.map((a) => (
             <option key={a.id} value={a.id}>
@@ -47,7 +45,7 @@ export function TransactionForm({
             </option>
           ))}
         </select>
-        <select name="category_id" className="flex-1 rounded border px-2 py-1">
+        <select name="category_id" className={`flex-1 ${inputClass}`}>
           <option value="">Categoría (opcional)...</option>
           {categories.map((c) => (
             <option key={c.id} value={c.id}>
@@ -61,16 +59,16 @@ export function TransactionForm({
         type="date"
         defaultValue={today}
         required
-        className="rounded border px-2 py-1"
+        className={inputClass}
       />
       <button
         type="submit"
         disabled={pending}
-        className="rounded bg-black px-3 py-2 text-white disabled:opacity-50"
+        className="rounded-lg bg-gradient-to-r from-violet-500 to-indigo-500 px-3 py-2 text-sm font-medium text-white transition hover:opacity-90 disabled:opacity-50"
       >
         {pending ? "Guardando..." : "Guardar transacción"}
       </button>
-      {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
+      {state?.error && <p className="text-sm text-rose-400">{state.error}</p>}
     </form>
   );
 }
