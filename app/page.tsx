@@ -2,8 +2,18 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { logout } from "@/app/actions";
 import { TransactionForm } from "@/app/TransactionForm";
+import { RecentLimitSelect } from "@/app/RecentLimitSelect";
 
-export default async function Home() {
+const RECENT_LIMITS = [15, 25, 50, 100];
+
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ limit?: string }>;
+}) {
+  const { limit: limitParam } = await searchParams;
+  const limit = RECENT_LIMITS.includes(Number(limitParam)) ? Number(limitParam) : 15;
+
   const supabase = await createClient();
 
   const {
@@ -48,7 +58,7 @@ export default async function Home() {
   }
   const distribucion = [...porCategoria.entries()].sort((a, b) => b[1] - a[1]);
 
-  const recientes = all.slice(0, 20);
+  const recientes = all.slice(0, limit);
   const fmt = (n: number) => n.toLocaleString("es-MX", { style: "currency", currency: "MXN" });
 
   return (
@@ -134,7 +144,10 @@ export default async function Home() {
       </section>
 
       <section>
-        <h2 className="mb-2 font-semibold">Movimientos recientes</h2>
+        <div className="mb-2 flex items-center justify-between">
+          <h2 className="font-semibold">Movimientos recientes</h2>
+          <RecentLimitSelect options={RECENT_LIMITS} value={limit} />
+        </div>
         <table className="w-full text-left text-sm">
           <thead>
             <tr className="border-b">
