@@ -114,7 +114,6 @@ export async function saveQuote(
   const ad_budget = Number(formData.get("ad_budget") ?? 0);
   const invoice_required = formData.get("invoice_required") === "on";
   const iva = Number(formData.get("iva") ?? 0);
-  const total_paid = Number(formData.get("total_paid") ?? 0);
   const notes = String(formData.get("notes") ?? "").trim();
   const custom_table_title = String(formData.get("custom_table_title") ?? "").trim() || null;
 
@@ -143,7 +142,6 @@ export async function saveQuote(
     ad_budget,
     invoice_required,
     iva,
-    total_paid,
     notes,
     custom_table_title,
     custom_table_rows,
@@ -203,4 +201,97 @@ export async function saveAgencySettings(
 
   revalidatePath("/morfo/ajustes");
   return { error: "" };
+}
+
+export async function savePayment(
+  _prevState: { error: string } | undefined,
+  formData: FormData,
+) {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return { error: "Sesión no válida." };
+  }
+
+  const quote_id = String(formData.get("quote_id") ?? "");
+  const amount = Number(formData.get("amount") ?? 0);
+  const payment_date = String(formData.get("payment_date") ?? "");
+  const method = String(formData.get("method") ?? "").trim() || null;
+  const notes = String(formData.get("notes") ?? "").trim();
+
+  if (!quote_id || !amount || amount <= 0 || !payment_date) {
+    return { error: "Faltan campos obligatorios (cotización, monto o fecha)." };
+  }
+
+  const { error } = await supabase
+    .from("payments")
+    .insert({ quote_id, amount, payment_date, method, notes });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/morfo/cotizaciones");
+  revalidatePath("/morfo/cobros");
+  redirect(`/morfo/cotizaciones/${quote_id}`);
+}
+
+export async function deletePayment(quoteId: string, id: string) {
+  const supabase = await createClient();
+  await supabase.from("payments").delete().eq("id", id);
+  revalidatePath("/morfo/cotizaciones");
+  revalidatePath("/morfo/cobros");
+  redirect(`/morfo/cotizaciones/${quoteId}`);
+}
+
+export async function saveExpense(
+  _prevState: { error: string } | undefined,
+  formData: FormData,
+) {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return { error: "Sesión no válida." };
+  }
+
+  const id = String(formData.get("id") ?? "") || null;
+  const expense_date = String(formData.get("expense_date") ?? "");
+  const concept = String(formData.get("concept") ?? "").trim();
+  const category = String(formData.get("category") ?? "").trim() || null;
+  const payment_method = String(formData.get("payment_method") ?? "").trim() || null;
+  const invoice = formData.get("invoice") === "on";
+  const amount = Number(formData.get("amount") ?? 0);
+  const notes = String(formData.get("notes") ?? "").trim();
+
+  if (!concept || !amount || amount <= 0 || !expense_date) {
+    return { error: "Faltan campos obligatorios (concepto, monto o fecha)." };
+  }
+
+  const payload = { expense_date, concept, category, payment_method, invoice, amount, notes };
+
+  const { error } = id
+    ? await supabase.from("expenses").update(payload).eq("id", id)
+    : await supabase.from("expenses").insert(payload);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/morfo/gastos");
+  redirect("/morfo/gastos");
+}
+
+export async function deleteExpense(id: string) {
+  const supabase = await createClient();
+  await supabase.from("expenses").delete().eq("id", id);
+  revalidatePath("/morfo/gastos");
+  redirect("/morfo/gastos");
 }

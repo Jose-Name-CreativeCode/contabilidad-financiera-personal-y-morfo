@@ -24,7 +24,12 @@ const PAYMENT_STATUS_LABEL: Record<string, string> = {
   pagada_total: "Pagada total",
 };
 
-export function downloadQuotePdf(quote: QuoteRecord, client: Client, settings: Settings) {
+export function downloadQuotePdf(
+  quote: QuoteRecord,
+  client: Client,
+  settings: Settings,
+  paidAmount: number,
+) {
   const doc = new jsPDF({ unit: "pt", format: "letter" });
   const pageWidth = doc.internal.pageSize.getWidth();
   const marginX = 50;
@@ -139,10 +144,10 @@ export function downloadQuotePdf(quote: QuoteRecord, client: Client, settings: S
   y += 18;
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
-  const remaining = total - quote.total_paid;
+  const remaining = total - paidAmount;
   doc.text(`Estado de pago: ${PAYMENT_STATUS_LABEL[quote.payment_status] ?? quote.payment_status}`, marginX + 8, y);
   y += 14;
-  doc.text(`Pagado: ${money(quote.total_paid)}   ·   Saldo pendiente: ${money(remaining)}`, marginX + 8, y);
+  doc.text(`Pagado: ${money(paidAmount)}   ·   Saldo pendiente: ${money(remaining)}`, marginX + 8, y);
 
   const bankDetails = quote.invoice_required
     ? settings.bank_details_invoice

@@ -23,7 +23,6 @@ export type QuoteRecord = {
   ad_budget: number;
   invoice_required: boolean;
   iva: number;
-  total_paid: number;
   notes: string;
   custom_table_title: string | null;
   custom_table_rows: { label: string; amount: number }[];
@@ -143,15 +142,6 @@ export function QuoteForm({
           defaultValue={quote?.service_amount ?? ""}
           required
           className={`flex-1 ${inputClass}`}
-        />
-        <input
-          name="total_paid"
-          type="number"
-          step="0.01"
-          min="0"
-          placeholder="Ya pagado"
-          defaultValue={quote?.total_paid ?? 0}
-          className={`w-32 ${inputClass}`}
         />
       </div>
 

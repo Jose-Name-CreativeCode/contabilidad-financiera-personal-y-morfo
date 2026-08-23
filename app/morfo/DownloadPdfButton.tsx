@@ -7,6 +7,7 @@ export function DownloadPdfButton({
   quote,
   client,
   settings,
+  paidAmount,
 }: {
   quote: QuoteRecord;
   client: { name: string; contact_person: string | null; email: string | null };
@@ -21,11 +22,12 @@ export function DownloadPdfButton({
     bank_details_no_invoice: string;
     terms: string;
   };
+  paidAmount: number;
 }) {
   return (
     <button
       type="button"
-      onClick={() => downloadQuotePdf(quote, client, settings)}
+      onClick={() => downloadQuotePdf(quote, client, settings, paidAmount)}
       className="w-full rounded-lg border border-fuchsia-400/30 bg-fuchsia-500/10 px-3 py-2 text-sm text-fuchsia-300 hover:bg-fuchsia-500/20"
     >
       Descargar PDF

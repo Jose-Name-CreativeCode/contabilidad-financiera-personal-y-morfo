@@ -24,6 +24,18 @@ const PAYMENT_LABEL: Record<string, string> = {
 
 const fmt = (n: number) => n.toLocaleString("es-MX", { style: "currency", currency: "MXN" });
 
+const quoteTotal = (q: {
+  service_amount: number;
+  ad_spend: number;
+  invoice_required: boolean;
+  iva: number;
+  custom_table_rows: { amount: number }[] | null;
+}) =>
+  Number(q.service_amount) +
+  Number(q.ad_spend) +
+  (q.invoice_required ? Number(q.iva) : 0) +
+  (q.custom_table_rows ?? []).reduce((acc, r) => acc + Number(r.amount), 0);
+
 export default async function QuotesPage() {
   const supabase = await createClient();
   const {
@@ -34,24 +46,27 @@ export default async function QuotesPage() {
     redirect("/morfo/login");
   }
 
-  const { data: quotes } = await supabase
-    .from("quotes")
-    .select(
-      "id, title, quote_date, status, payment_status, service_amount, ad_spend, iva, invoice_required, total_paid, clients(name)",
-    )
-    .order("quote_date", { ascending: false });
+  const [{ data: quotes }, { data: payments }] = await Promise.all([
+    supabase
+      .from("quotes")
+      .select(
+        "id, title, quote_date, status, payment_status, service_amount, ad_spend, iva, invoice_required, custom_table_rows, clients(name)",
+      )
+      .order("quote_date", { ascending: false }),
+    supabase.from("payments").select("quote_id, amount"),
+  ]);
 
   const all = quotes ?? [];
-  const totalCotizado = all.reduce(
-    (acc, q) =>
-      acc + Number(q.service_amount) + Number(q.ad_spend) + (q.invoice_required ? Number(q.iva) : 0),
+  const paidByQuote = new Map<string, number>();
+  for (const p of payments ?? []) {
+    paidByQuote.set(p.quote_id, (paidByQuote.get(p.quote_id) ?? 0) + Number(p.amount));
+  }
+
+  const totalCotizado = all.reduce((acc, q) => acc + quoteTotal(q), 0);
+  const totalPendiente = all.reduce(
+    (acc, q) => acc + Math.max(0, quoteTotal(q) - (paidByQuote.get(q.id) ?? 0)),
     0,
   );
-  const totalPendiente = all.reduce((acc, q) => {
-    const total =
-      Number(q.service_amount) + Number(q.ad_spend) + (q.invoice_required ? Number(q.iva) : 0);
-    return acc + Math.max(0, total - Number(q.total_paid));
-  }, 0);
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-black text-zinc-100">
@@ -63,10 +78,28 @@ export default async function QuotesPage() {
           </div>
           <div className="flex items-center gap-2">
             <Link
+              href="/morfo/operaciones"
+              className="rounded-lg border border-white/10 px-3 py-1.5 text-xs text-zinc-300 hover:bg-white/5"
+            >
+              Operaciones
+            </Link>
+            <Link
               href="/morfo"
               className="rounded-lg border border-white/10 px-3 py-1.5 text-xs text-zinc-300 hover:bg-white/5"
             >
               Clientes
+            </Link>
+            <Link
+              href="/morfo/cobros"
+              className="rounded-lg border border-white/10 px-3 py-1.5 text-xs text-zinc-300 hover:bg-white/5"
+            >
+              Cobros
+            </Link>
+            <Link
+              href="/morfo/gastos"
+              className="rounded-lg border border-white/10 px-3 py-1.5 text-xs text-zinc-300 hover:bg-white/5"
+            >
+              Gastos
             </Link>
             <Link
               href="/morfo/ajustes"
@@ -104,10 +137,7 @@ export default async function QuotesPage() {
           </div>
           <div className="flex flex-col divide-y divide-white/5">
             {all.map((q) => {
-              const total =
-                Number(q.service_amount) +
-                Number(q.ad_spend) +
-                (q.invoice_required ? Number(q.iva) : 0);
+              const total = quoteTotal(q);
               return (
                 <Link
                   key={q.id}
