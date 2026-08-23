@@ -1,0 +1,8 @@
+[
+  { "id": "cat-supermercado", "name": "Supermercado" },
+  { "id": "cat-transporte", "name": "Transporte" },
+  { "id": "cat-restaurantes", "name": "Restaurantes" },
+  { "id": "cat-servicios", "name": "Servicios" },
+  { "id": "cat-entretenimiento", "name": "Entretenimiento" },
+  { "id": "cat-otros", "name": "Otros" }
+]

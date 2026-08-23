@@ -1,0 +1,5 @@
+[
+  { "id": "acc-bbva", "name": "BBVA" },
+  { "id": "acc-amex", "name": "Amex" },
+  { "id": "acc-efectivo", "name": "Efectivo" }
+]

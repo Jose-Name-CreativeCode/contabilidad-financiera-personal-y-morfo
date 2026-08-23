@@ -1,0 +1,8 @@
+{
+  "type": "expense",
+  "amount": 850,
+  "description": "Costco",
+  "account_id": null,
+  "category_id": null,
+  "currency": "MXN"
+}
