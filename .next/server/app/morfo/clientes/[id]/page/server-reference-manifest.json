@@ -1,0 +1,126 @@
+{
+  "node": {
+    "60c13712d44cd823507b8c8d92856fc6bd8cf344ce": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "saveClient",
+      "filename": "app/morfo/actions.ts"
+    },
+    "00f425a9389a31ac83ca95686ff34a71342072cc4f": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "logout",
+      "filename": "app/morfo/actions.ts"
+    },
+    "4055acd7b637d97eebabb650844fcffc1131ea3eaa": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "deleteExpense",
+      "filename": "app/morfo/actions.ts"
+    },
+    "40936fbf2e7b923fc2d6f8798dd754772a8770d09a": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "deleteQuote",
+      "filename": "app/morfo/actions.ts"
+    },
+    "40d734c145a1435ac4f60bd29411a2c77913a2682d": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "deleteClient",
+      "filename": "app/morfo/actions.ts"
+    },
+    "602f7d57d2a11779c597759a1c61cab2be03ffb9b0": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "saveAgencySettings",
+      "filename": "app/morfo/actions.ts"
+    },
+    "6034bdeacd31ee92ce20d53ca5c81a071d8a83d12b": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "savePayment",
+      "filename": "app/morfo/actions.ts"
+    },
+    "603d3349c4d3f9f615c4bc1010474273a1f63a7e36": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "login",
+      "filename": "app/morfo/actions.ts"
+    },
+    "606acda44928c458b12c90a0d38e358b4646f03353": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "saveExpense",
+      "filename": "app/morfo/actions.ts"
+    },
+    "607067ad241c342533c76939ae1925fe1805ff2930": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "deletePayment",
+      "filename": "app/morfo/actions.ts"
+    },
+    "60b6af29398670fde541d312a3bbe08b774618e39c": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "saveQuote",
+      "filename": "app/morfo/actions.ts"
+    }
+  },
+  "edge": {}
+}

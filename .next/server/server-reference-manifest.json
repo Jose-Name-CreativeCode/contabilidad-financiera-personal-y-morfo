@@ -1,0 +1,355 @@
+{
+  "node": {
+    "0011d47683db8b01cee327b9eea614f537bdbb2b1b": {
+      "workers": {
+        "app/page": {
+          "moduleId": 57526,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/actions.ts",
+      "exportedName": "logout"
+    },
+    "603a47c7aea20649d559ae8d34e38e3cdd5a835e0c": {
+      "workers": {
+        "app/page": {
+          "moduleId": 57526,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/actions.ts",
+      "exportedName": "createTransaction"
+    },
+    "60e4aa658ac004517a967966f85e0968a4ac7497d8": {
+      "workers": {
+        "app/login/page": {
+          "moduleId": 62541,
+          "async": false,
+          "codeHash": null
+        },
+        "app/page": {
+          "moduleId": 57526,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/actions.ts",
+      "exportedName": "login"
+    },
+    "00f425a9389a31ac83ca95686ff34a71342072cc4f": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/cotizaciones/[id]/page": {
+          "moduleId": 79296,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/gastos/[id]/page": {
+          "moduleId": 23236,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/page": {
+          "moduleId": 27145,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/morfo/actions.ts",
+      "exportedName": "logout"
+    },
+    "4055acd7b637d97eebabb650844fcffc1131ea3eaa": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/cotizaciones/[id]/page": {
+          "moduleId": 79296,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/gastos/[id]/page": {
+          "moduleId": 23236,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/page": {
+          "moduleId": 27145,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/morfo/actions.ts",
+      "exportedName": "deleteExpense"
+    },
+    "40936fbf2e7b923fc2d6f8798dd754772a8770d09a": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/cotizaciones/[id]/page": {
+          "moduleId": 79296,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/gastos/[id]/page": {
+          "moduleId": 23236,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/page": {
+          "moduleId": 27145,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/morfo/actions.ts",
+      "exportedName": "deleteQuote"
+    },
+    "40d734c145a1435ac4f60bd29411a2c77913a2682d": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/cotizaciones/[id]/page": {
+          "moduleId": 79296,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/gastos/[id]/page": {
+          "moduleId": 23236,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/page": {
+          "moduleId": 27145,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/morfo/actions.ts",
+      "exportedName": "deleteClient"
+    },
+    "602f7d57d2a11779c597759a1c61cab2be03ffb9b0": {
+      "workers": {
+        "app/morfo/ajustes/page": {
+          "moduleId": 79491,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/cotizaciones/[id]/page": {
+          "moduleId": 79296,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/gastos/[id]/page": {
+          "moduleId": 23236,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/page": {
+          "moduleId": 27145,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/morfo/actions.ts",
+      "exportedName": "saveAgencySettings"
+    },
+    "6034bdeacd31ee92ce20d53ca5c81a071d8a83d12b": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/cotizaciones/[id]/page": {
+          "moduleId": 79296,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/gastos/[id]/page": {
+          "moduleId": 23236,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/page": {
+          "moduleId": 27145,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/morfo/actions.ts",
+      "exportedName": "savePayment"
+    },
+    "603d3349c4d3f9f615c4bc1010474273a1f63a7e36": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/cotizaciones/[id]/page": {
+          "moduleId": 79296,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/gastos/[id]/page": {
+          "moduleId": 23236,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/login/page": {
+          "moduleId": 97957,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/page": {
+          "moduleId": 27145,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/morfo/actions.ts",
+      "exportedName": "login"
+    },
+    "606acda44928c458b12c90a0d38e358b4646f03353": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/cotizaciones/[id]/page": {
+          "moduleId": 79296,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/gastos/[id]/page": {
+          "moduleId": 23236,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/gastos/nuevo/page": {
+          "moduleId": 29157,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/page": {
+          "moduleId": 27145,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/morfo/actions.ts",
+      "exportedName": "saveExpense"
+    },
+    "607067ad241c342533c76939ae1925fe1805ff2930": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/cotizaciones/[id]/page": {
+          "moduleId": 79296,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/gastos/[id]/page": {
+          "moduleId": 23236,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/page": {
+          "moduleId": 27145,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/morfo/actions.ts",
+      "exportedName": "deletePayment"
+    },
+    "60b6af29398670fde541d312a3bbe08b774618e39c": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/cotizaciones/[id]/page": {
+          "moduleId": 79296,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/cotizaciones/nueva/page": {
+          "moduleId": 24103,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/gastos/[id]/page": {
+          "moduleId": 23236,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/page": {
+          "moduleId": 27145,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/morfo/actions.ts",
+      "exportedName": "saveQuote"
+    },
+    "60c13712d44cd823507b8c8d92856fc6bd8cf344ce": {
+      "workers": {
+        "app/morfo/clientes/[id]/page": {
+          "moduleId": 87749,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/clientes/nueva/page": {
+          "moduleId": 25803,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/cotizaciones/[id]/page": {
+          "moduleId": 79296,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/gastos/[id]/page": {
+          "moduleId": 23236,
+          "async": false,
+          "codeHash": null
+        },
+        "app/morfo/page": {
+          "moduleId": 27145,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "app/morfo/actions.ts",
+      "exportedName": "saveClient"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "jXg7TksxaHNMwfirIIlefBpaSXUlZz5sXtcV/0bteek="
+}

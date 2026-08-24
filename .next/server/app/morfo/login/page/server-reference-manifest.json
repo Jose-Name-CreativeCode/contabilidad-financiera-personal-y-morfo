@@ -1,0 +1,16 @@
+{
+  "node": {
+    "603d3349c4d3f9f615c4bc1010474273a1f63a7e36": {
+      "workers": {
+        "app/morfo/login/page": {
+          "moduleId": 97957,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "login",
+      "filename": "app/morfo/actions.ts"
+    }
+  },
+  "edge": {}
+}

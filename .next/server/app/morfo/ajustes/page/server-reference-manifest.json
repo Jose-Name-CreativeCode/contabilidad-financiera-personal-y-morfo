@@ -1,0 +1,16 @@
+{
+  "node": {
+    "602f7d57d2a11779c597759a1c61cab2be03ffb9b0": {
+      "workers": {
+        "app/morfo/ajustes/page": {
+          "moduleId": 79491,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "saveAgencySettings",
+      "filename": "app/morfo/actions.ts"
+    }
+  },
+  "edge": {}
+}

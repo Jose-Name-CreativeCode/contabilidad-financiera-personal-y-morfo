@@ -1,0 +1,16 @@
+{
+  "node": {
+    "606acda44928c458b12c90a0d38e358b4646f03353": {
+      "workers": {
+        "app/morfo/gastos/nuevo/page": {
+          "moduleId": 29157,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "saveExpense",
+      "filename": "app/morfo/actions.ts"
+    }
+  },
+  "edge": {}
+}

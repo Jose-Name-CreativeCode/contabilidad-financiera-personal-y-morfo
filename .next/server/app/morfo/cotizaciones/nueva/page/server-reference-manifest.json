@@ -1,0 +1,16 @@
+{
+  "node": {
+    "60b6af29398670fde541d312a3bbe08b774618e39c": {
+      "workers": {
+        "app/morfo/cotizaciones/nueva/page": {
+          "moduleId": 24103,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "saveQuote",
+      "filename": "app/morfo/actions.ts"
+    }
+  },
+  "edge": {}
+}

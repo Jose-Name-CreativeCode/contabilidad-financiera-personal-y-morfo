@@ -1,0 +1,20 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/login/page": "app/login/page.js",
+  "/morfo/ajustes/page": "app/morfo/ajustes/page.js",
+  "/morfo/clientes/[id]/page": "app/morfo/clientes/[id]/page.js",
+  "/morfo/clientes/nueva/page": "app/morfo/clientes/nueva/page.js",
+  "/morfo/cobros/page": "app/morfo/cobros/page.js",
+  "/morfo/cotizaciones/[id]/page": "app/morfo/cotizaciones/[id]/page.js",
+  "/morfo/cotizaciones/nueva/page": "app/morfo/cotizaciones/nueva/page.js",
+  "/morfo/cotizaciones/page": "app/morfo/cotizaciones/page.js",
+  "/morfo/gastos/[id]/page": "app/morfo/gastos/[id]/page.js",
+  "/morfo/gastos/nuevo/page": "app/morfo/gastos/nuevo/page.js",
+  "/morfo/gastos/page": "app/morfo/gastos/page.js",
+  "/morfo/login/page": "app/morfo/login/page.js",
+  "/morfo/operaciones/page": "app/morfo/operaciones/page.js",
+  "/morfo/page": "app/morfo/page.js",
+  "/page": "app/page.js"
+}

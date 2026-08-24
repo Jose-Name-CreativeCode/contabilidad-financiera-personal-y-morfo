@@ -1,0 +1,20 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/login/page": "/login",
+  "/morfo/ajustes/page": "/morfo/ajustes",
+  "/morfo/clientes/[id]/page": "/morfo/clientes/[id]",
+  "/morfo/clientes/nueva/page": "/morfo/clientes/nueva",
+  "/morfo/cobros/page": "/morfo/cobros",
+  "/morfo/cotizaciones/[id]/page": "/morfo/cotizaciones/[id]",
+  "/morfo/cotizaciones/nueva/page": "/morfo/cotizaciones/nueva",
+  "/morfo/cotizaciones/page": "/morfo/cotizaciones",
+  "/morfo/gastos/[id]/page": "/morfo/gastos/[id]",
+  "/morfo/gastos/nuevo/page": "/morfo/gastos/nuevo",
+  "/morfo/gastos/page": "/morfo/gastos",
+  "/morfo/login/page": "/morfo/login",
+  "/morfo/operaciones/page": "/morfo/operaciones",
+  "/morfo/page": "/morfo",
+  "/page": "/"
+}
